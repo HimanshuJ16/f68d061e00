@@ -8,7 +8,7 @@ The application and anonymous public repository were published on 25 October 202
 - [ ] Start the app, inspect real January data, change cutoff and inspect a publication time.
 - [ ] Check the Jan 31 decision -> Feb 1 delivery boundary and the outcome overlay.
 - [ ] Run backend tests, frontend tests and production build.
-- [ ] Start Docker Desktop/daemon and run the documented Docker build and smoke check if container execution was unavailable during development.
+- [x] Start Docker Desktop/daemon and run the documented Docker build and smoke check. Completed 25 October: healthy container, browser/API/CSV checks and independent data audit passed.
 - [ ] Confirm your total assignment effort, including your own review/recording/publication, remains within the brief's 16-hour cap. The effort log covers only observed assistant work and must not replace your own time record.
 
 ## Repository
@@ -27,7 +27,7 @@ The application and anonymous public repository were published on 25 October 202
 - [x] Add verified application URL to README: [windshift-january-2026.vercel.app](https://windshift-january-2026.vercel.app).
 - [ ] Run the final signed-out incognito check below immediately before submission.
 
-The Heroku container route remains documented as an alternative; it is not required for this Vercel deployment. Docker build/run is still unverified locally because its daemon was unavailable.
+The Heroku container route remains documented as an alternative; it is not required for this Vercel deployment. Docker build/run is now verified locally, with the container available at `http://127.0.0.1:8001` while it remains running.
 
 ## Video
 

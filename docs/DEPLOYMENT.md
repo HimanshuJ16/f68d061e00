@@ -36,7 +36,18 @@ docker compose up --build
 
 Open `http://127.0.0.1:8000`. Set `APP_PORT` to change the local host port. `docker compose down` stops the service. The Docker healthcheck requests `/api/health` using Python's standard library and requires both `status: ok` and `dataLoaded: true`; an HTTP 200 response with degraded data is unhealthy.
 
-`docker compose config --quiet` passed during implementation. A full image build and container execution could not be verified because the installed Docker CLI could not connect to the Docker Desktop Linux engine. Docker Desktop was not started automatically.
+The image build and container execution passed on 25 October 2026 with Docker Engine 28.0.4, Linux/amd64 and Python 3.11.17. Compose reported healthy; the app served its bundled frontend, API and CSV exports, and all 1,488 default-cutoff intervals matched the independent raw-data audit. A separate container also served health successfully with `PORT=9000` and `--network none`. See [verification evidence](VERIFICATION.md) and [container data audit](DOCKER-DATA-AUDIT.md).
+
+The verified local instance uses port 8001 because the existing Python test server occupies port 8000. To reproduce this configuration in PowerShell:
+
+```powershell
+$env:APP_PORT = '8001'
+docker compose -p windshift up --build -d --wait --wait-timeout 120
+docker compose -p windshift ps
+Invoke-RestMethod http://127.0.0.1:8001/api/health
+```
+
+Open [http://127.0.0.1:8001](http://127.0.0.1:8001). Stop this instance with `docker compose -p windshift down`. Its host binding is loopback only. Docker Desktop initially failed on a stale telemetry socket; its runtime directory was preserved under a backup name and recreated before the successful start. Existing Docker images, volumes and application data were not reset.
 
 ## Heroku container registry: manual path
 

@@ -34,7 +34,7 @@ With Docker's Linux engine running:
 docker compose up --build
 ```
 
-Open port 8000; stop with `docker compose down`. The image builds React, installs Python dependencies and runs one non-root FastAPI process serving both assets and API. It honours `PORT` (default 8000). Docker configuration was validated, but image build/run could not be tested because the local Docker daemon was unavailable. See [deployment instructions](docs/DEPLOYMENT.md) for the manual Heroku container route.
+Open port 8000; stop with `docker compose down`. The image builds React, installs Python dependencies and runs one non-root FastAPI process serving both assets and API. It honours `PORT` (default 8000). The Linux image build, healthy container, browser cutoff/actuals flow, CSV exports and independent 1,488-interval data audit passed on 25 October 2026. See [verification evidence](docs/VERIFICATION.md) and [deployment instructions](docs/DEPLOYMENT.md), including how to use another local port.
 
 ## A useful first walkthrough
 

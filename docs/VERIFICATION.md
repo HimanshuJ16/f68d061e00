@@ -1,5 +1,34 @@
 # Verification record
 
+## Docker image and runtime verification — 25 October 2026
+
+**Story:** the production React page requests an applied UK cutoff from FastAPI, which selects the eligible forecasts from the packaged snapshot and returns the replay, hindsight metrics and CSV exports.
+
+Docker Desktop initially failed while removing a stale `userAnalyticsOtlpHttp.sock`. After stopping Desktop, the runtime socket directory was preserved under a backup name and a clean runtime directory was created. Desktop then started successfully. No factory reset, volume deletion, image deletion or Docker data reset was performed.
+
+```powershell
+$env:APP_PORT = '8001'
+docker compose -p windshift up --build -d --wait --wait-timeout 120
+docker compose -p windshift ps
+docker compose -p windshift exec -T web sh -c 'id; python --version; python -m pip check'
+python scripts/audit_snapshot.py --api-url http://127.0.0.1:8001 --report docs/DOCKER-DATA-AUDIT.md
+```
+
+- Build succeeded, including the TypeScript/Vite production build and pinned Python dependency installation. Runtime image: `sha256:bd02a988d59cb3c5e7116c04372e027145b1501f23bc8d65adf629b2db3fc9c9`, Linux/amd64. Docker Engine 28.0.4, Compose v2.34.0-desktop.1, Python 3.11.17.
+- `windshift-web-1` reported **healthy**, with repeated healthcheck exit code 0. Host binding: `127.0.0.1:8001` to container port 8000. The existing Python server on port 8000 was retained.
+- Runtime identity is `uid=10001(app) gid=10001(app)`, and `pip check` reported no broken requirements. Local Vercel state is now explicitly excluded from the Docker build context.
+- A separate temporary container with `--network none` and `PORT=9000` returned healthy snapshot data from port 9000 through an internal request. It was stopped after verification. This confirms custom-port startup and that the packaged snapshot requires no upstream connection.
+
+| Boundary | Status | Evidence |
+|---|---|---|
+| UI renders | PASS | Browser loaded the production page and assets from port 8001; no browser console errors returned. |
+| Client → API | PASS | Changing 09:00 to 10:00 and applying the cutoff selected 18,699 MW from the 09:30 publication, replacing 18,781 MW from 07:30. Container request logs show successful analysis responses. |
+| API → data | PASS | Health reports `status: ok`, `dataLoaded: true`, and the expected snapshot identity. Independent raw-cache audit matched all 1,488 intervals and all day/month metrics; [full report](DOCKER-DATA-AUDIT.md). |
+| Data → response | PASS | Root HTML and JS/CSS returned 200; month CSV contained 1,488 rows and daily CSV 48. Jan 31 delivery reaches Feb 1. Invalid cutoff returned 422 and unknown API returned 404. |
+| Response → UI | PASS | Hindsight reveal rendered actual 15,228 MW and error +3,471 MW for the first delivery interval at cutoff 10:00, plus daily error metrics. [Screenshot](screenshots/docker-replay.png). |
+
+The earlier unavailable-daemon notes below are historical and are superseded by this successful build/run evidence. Vercel remains the public hosting route; this container is a verified local alternative. Video and submission remain manual.
+
 ## GitHub publication and automatic deployment — 25 October 2026
 
 Public source: [HimanshuJ16/f68d061e00](https://github.com/HimanshuJ16/f68d061e00), default branch `main`. The published source matches the clean release manifest; local environments, caches, `.vercel/`, credentials and the private challenge DOCX are excluded. GitHub no-reply commit identity is used. The README was accessible through an unauthenticated public HTTP request.

@@ -1,6 +1,6 @@
 # Brief-to-product checklist
 
-The functional core is complete and [deployed on Vercel](https://windshift-january-2026.vercel.app): Windshift shows decision-time Elexon wind forecasts and quantifies their retrospective errors. The [anonymous public repository](https://github.com/HimanshuJ16/f68d061e00) is connected to Vercel. Video and submission remain manual and pending. Docker execution remains unverified. This is not a claim of full challenge completion.
+The functional core is complete and [deployed on Vercel](https://windshift-january-2026.vercel.app): Windshift shows decision-time Elexon wind forecasts and quantifies their retrospective errors. The [anonymous public repository](https://github.com/HimanshuJ16/f68d061e00) is connected to Vercel. Docker build/run and the full container data audit passed on 25 October 2026. Video and submission remain manual and pending. This is not a claim of full challenge completion.
 
 The original challenge DOCX was reread on 25 October 2026. This checklist maps its requirements to the current local implementation. Existing test/browser evidence is in [VERIFICATION.md](VERIFICATION.md); this document does not claim a new test run.
 
@@ -17,7 +17,7 @@ The original challenge DOCX was reread on 25 October 2026. This checklist maps i
 | React frontend | React/TypeScript source and pinned packages in `frontend/`; production Vite build. |
 | Python backend | FastAPI API, deterministic engine and explicit refresh CLI in `backend/`. |
 | Explicitly disclose AI assistance in README | README “AI assistance disclosure” identifies assistance and the user's review/presentation responsibility. |
-| Use Docker | Multi-stage `Dockerfile`, `docker-compose.yml`, healthcheck and non-root runtime provided. Configuration validation passed previously; image build/run was not completed because the Docker daemon was unavailable. **Execution unverified.** |
+| Use Docker | **Completed and executed:** multi-stage Linux/amd64 image built, Compose container healthy, non-root UID 10001, production browser/API/CSV checks passed, all 1,488 intervals independently audited. Custom `PORT` and offline snapshot startup passed. See [VERIFICATION.md](VERIFICATION.md). |
 | Deploy on Vercel or Heroku | **Completed on Vercel**, with React assets and a Python 3.12 FastAPI function. Anonymous HTTP checks, live workflow and independent production data audit passed. See [DEPLOYMENT.md](DEPLOYMENT.md). |
 | Stay within 16 hours | [EFFORT.md](EFFORT.md) records observed work, interruptions and approximate parallel effort. Add redesign and the user's own review/recording/publication time; total human effort is not certified here. |
 | Present/pitch to client | Working UI, README walkthrough and customer segment in [DEMO.md](DEMO.md). Actual presentation/recording remains manual. |
