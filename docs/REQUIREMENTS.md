@@ -1,6 +1,6 @@
 # Brief-to-product checklist
 
-The functional core is complete and [deployed on Vercel](https://windshift-january-2026.vercel.app): Windshift shows decision-time Elexon wind forecasts and quantifies their retrospective errors. Repository, video and submission deliverables remain manual and pending. Docker execution remains unverified. This is not a claim of full challenge completion.
+The functional core is complete and [deployed on Vercel](https://windshift-january-2026.vercel.app): Windshift shows decision-time Elexon wind forecasts and quantifies their retrospective errors. The [anonymous public repository](https://github.com/HimanshuJ16/f68d061e00) is connected to Vercel. Video and submission remain manual and pending. Docker execution remains unverified. This is not a claim of full challenge completion.
 
 The original challenge DOCX was reread on 25 October 2026. This checklist maps its requirements to the current local implementation. Existing test/browser evidence is in [VERIFICATION.md](VERIFICATION.md); this document does not claim a new test run.
 
@@ -23,11 +23,11 @@ The original challenge DOCX was reread on 25 October 2026. This checklist maps i
 | Present/pitch to client | Working UI, README walkthrough and customer segment in [DEMO.md](DEMO.md). Actual presentation/recording remains manual. |
 | Explain architecture, design, analysis, code and development practices to technical lead | README diagram/file map, methodology, tests, independent data/dependency audits and technical demo segment. Actual recorded presentation remains pending. |
 | Unlisted YouTube demo, <=10 minutes, customer overview <=5 minutes and technical overview <=5 minutes | Nine-minute script allocates about 4m30s to each segment. **No video recorded/uploaded; actual duration and access unverified.** The original requires the video before submission. |
-| Public GitHub repository with anonymous/random repository name | Clean-source packaging script and release checklist supplied. **No public repository created/pushed; manual pending.** |
+| Public GitHub repository with anonymous/random repository name | **Completed:** public repository `HimanshuJ16/f68d061e00`, clean source pushed to `main`, linked to Vercel production. |
 | README describes files/directories and how to start | README file-responsibility table, local/dev/production/Docker commands and refresh instructions provided. |
 | README links deployed application | **Completed:** README links the verified production application URL. |
 | Submit details in the supplied form | [MANUAL-RELEASE.md](MANUAL-RELEASE.md) provides the final checklist. **No form filled/submitted; manual pending.** |
-| Open every submitted URL in incognito and verify access | Application access passed unauthenticated HTTP and browser checks. Final incognito checks for all submitted URLs remain manual; repository and video URLs are not yet created. |
+| Open every submitted URL in incognito and verify access | App and repository README passed unauthenticated HTTP checks. Final incognito checks for all submitted URLs remain manual; video URL is not yet created. |
 
 The 25 October redesign completed and verified these additional refinements:
 

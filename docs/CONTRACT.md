@@ -1,6 +1,6 @@
 # Windshift implementation contract
 
-React/TypeScript + FastAPI product. The initial build was local-only; on 25 October the user explicitly authorized Vercel deployment, which is now complete. Repository publication, video/upload and submission remain manual.
+React/TypeScript + FastAPI product. The initial build was local-only; on 25 October the user explicitly authorized Vercel deployment, then GitHub publication and connection. Those are complete. Video/upload and submission remain manual.
 
 `GET /api/analysis?cutoff=09:00` returns the shape below. Cutoff is any valid HH:mm in Europe/London, on each decision date January 1–31 2026. Delivery is the next UK calendar day (Jan 2–Feb 1); explicit civil-day pilot assumption, not a full exchange delivery schedule. Select greatest WINDFOR publishTime <= cutoff independently per target. Actuals are hindsight and never used to select forecasts. Error = forecast - actual; positive means wind shortfall versus expectation. MW throughout, energy MWh = sum(MW * 0.5). No MAPE.
 

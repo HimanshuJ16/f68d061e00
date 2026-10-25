@@ -4,11 +4,13 @@
 
 Production: [https://windshift-january-2026.vercel.app](https://windshift-january-2026.vercel.app). Deployed on 25 October 2026 following the user's explicit authorization, in the existing Hobby project space. No paid plan or add-on was purchased.
 
+Source repository: [HimanshuJ16/f68d061e00](https://github.com/HimanshuJ16/f68d061e00), public with the anonymous name required by the challenge. It is connected through Vercel's GitHub integration to this existing project, with production branch `main` and root directory `.`. Pushes to `main` use the tracked manifests and update production. No Vercel CLI credentials or local `.vercel/` state are committed. Commit authors use the account's GitHub no-reply address.
+
 The root `pyproject.toml` declares the Python 3.12 dependency set and `backend.app:app` entrypoint. `vercel.json` builds React with npm, configures the FastAPI function, and includes `data/snapshot.json`. `.vercelignore` prevents uploading virtual environments, raw caches, tests, development dependencies and internal documentation. Built assets and font licence notices are generated from the tracked frontend. API requests and frontend URLs use the same origin.
 
 The same pinned runtime dependencies appear in `requirements.txt` (local/Docker) and `pyproject.toml` (Vercel); a regression test prevents drift. When a pyproject manifest is present, Vercel installs from it, so its explicit dependencies are essential. The backend does not run Docker on Vercel: it runs as a Python function. The Docker configuration remains a separate supported deployment route.
 
-After local review and tests, update this existing project with:
+After local review and tests, normally commit and push to `main` to update this connected project. The CLI remains available for an explicitly intended direct deployment:
 
 ```sh
 npx vercel login
@@ -18,7 +20,7 @@ npx vercel deploy --prod
 
 These commands use your normal CLI account; never paste tokens into source files or chat. The existing local directory is already linked. `.vercel/` is ignored and excluded from the source archive. A fresh checkout needs to be linked again.
 
-Public HTTP checks passed without authentication for `/`, `/api/health`, `/api/analysis?cutoff=09:00` and daily CSV export. Browser checks verified cutoff changes, hindsight review and the full 1,488-row month download. The independent raw-data audit matches the production API. See [VERIFICATION.md](VERIFICATION.md) for evidence. Public repository/video/form actions remain manual, and final incognito checks remain on the release checklist.
+Public HTTP checks passed without authentication for `/`, `/api/health`, `/api/analysis?cutoff=09:00` and daily CSV export. Browser checks verified cutoff changes, hindsight review and the full 1,488-row month download. The independent raw-data audit matches the production API. See [VERIFICATION.md](VERIFICATION.md) for evidence. Repository publication is complete; video/form actions and final incognito checks remain on the release checklist.
 
 Primary platform references: [FastAPI on Vercel](https://vercel.com/docs/frameworks/backend/fastapi), [Python runtime](https://vercel.com/docs/functions/runtimes/python), [function configuration](https://vercel.com/docs/project-configuration/vercel-json).
 

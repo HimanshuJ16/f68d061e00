@@ -4,6 +4,8 @@ A decision replay and forecast-error review for a UK day-ahead power buying team
 
 **Live application:** [windshift-january-2026.vercel.app](https://windshift-january-2026.vercel.app). **Source:** [HimanshuJ16/f68d061e00](https://github.com/HimanshuJ16/f68d061e00). React and Python FastAPI run together on Vercel. Deployment and public repository creation were explicitly authorized by the user. No video upload or challenge submission has been made.
 
+The GitHub repository is connected to the existing Vercel project. Its production branch is `main`; pushes to that branch trigger the Vercel build and production deployment.
+
 **25 October redesign:** the interface now uses an editorial graphite/ivory/citron design, self-hosted typography, a horizontal decision timeline and a persistent interval inspector. The production build, 52 backend tests, 12 frontend tests and responsive browser checks passed. See the dated [verification record](docs/VERIFICATION.md) and [brief-to-product checklist](docs/REQUIREMENTS.md).
 
 ## Run locally
