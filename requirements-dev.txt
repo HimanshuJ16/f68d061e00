@@ -1,0 +1,12 @@
+-r requirements.txt
+httpx==0.28.1
+pytest==8.3.4
+certifi==2026.10.23
+httpcore==1.0.9
+iniconfig==2.3.1
+packaging==26.3
+pluggy==1.7.0
+black==24.10.0
+mypy-extensions==1.1.0
+pathspec==1.1.1
+platformdirs==4.13.5

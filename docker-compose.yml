@@ -1,0 +1,11 @@
+services:
+  web:
+    build:
+      context: .
+      target: runtime
+    ports:
+      - "127.0.0.1:${APP_PORT:-8000}:8000"
+    environment:
+      PORT: "8000"
+    init: true
+    restart: unless-stopped

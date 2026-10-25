@@ -1,0 +1,17 @@
+.git
+.vercel
+.venv
+.pytest_cache
+work
+tests
+docs
+scripts
+frontend/node_modules
+frontend/dist
+**/__pycache__
+**/*.pyc
+**/*.tsbuildinfo
+**/*.test.tsx
+**/.env
+**/.env.*
+*.log
