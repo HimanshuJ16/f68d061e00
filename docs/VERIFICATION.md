@@ -1,5 +1,13 @@
 # Verification record
 
+## GitHub publication and automatic deployment — 25 October 2026
+
+Public source: [HimanshuJ16/f68d061e00](https://github.com/HimanshuJ16/f68d061e00), default branch `main`. The published source matches the clean release manifest; local environments, caches, `.vercel/`, credentials and the private challenge DOCX are excluded. GitHub no-reply commit identity is used. The README was accessible through an unauthenticated public HTTP request.
+
+The existing Vercel project is connected to this exact GitHub repository, with production branch `main` and root directory `.`. Pushing commit `e95e3fc2a0eace1168cfbb5b866f645dc0fdc9bd` automatically created production deployment `dpl_7jaVU68TsWw66iBbxCfD82eY4tnd`, with source `git`, branch `main` and status `READY`. GitHub's Vercel commit status reported `success`. The public app health and default analysis were checked after that Git-triggered deployment.
+
+The original CLI-built release evidence below is retained. No video was uploaded and no challenge form was submitted.
+
 ## Production deployment — 25 October 2026
 
 Application: [windshift-january-2026.vercel.app](https://windshift-january-2026.vercel.app). React assets and the Python FastAPI backend are deployed together in a Vercel Hobby project. Successful deployment ID: `dpl_F7pwrqXwwASUujeX5sE3CTYjsQHA`.
@@ -13,7 +21,7 @@ Application: [windshift-january-2026.vercel.app](https://windshift-january-2026.
 
 [Production screenshot](screenshots/production.jpg) was captured from the verified public deployment; the production browser reported no console errors during the check.
 
-Repository publication, video/upload and form submission were not performed. Public HTTP access was verified; the final incognito checklist for all submitted URLs remains manual. Docker runtime validation remains pending because the local daemon was unavailable.
+This initial CLI release preceded GitHub publication and automatic deployment, which are recorded above. Video/upload and form submission were not performed. Public HTTP access was verified; the final incognito checklist for all submitted URLs remains manual. Docker runtime validation remains pending because the local daemon was unavailable.
 
 ## Latest verification — 25 October 2026 redesign
 
