@@ -1,6 +1,8 @@
 .git
 .gitignore
 .vercel
+docs
+scripts
 .venv
 venv
 **/__pycache__

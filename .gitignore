@@ -15,3 +15,10 @@ work/
 *.log
 .DS_Store
 Thumbs.db
+
+# Local handoff material and development evidence
+scripts/
+docs/*
+!docs/DEPLOYMENT.md
+!docs/METHODOLOGY.md
+!docs/SOURCES.md

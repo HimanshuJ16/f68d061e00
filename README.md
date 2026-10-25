@@ -2,11 +2,9 @@
 
 A decision replay and forecast-error review for a UK day-ahead power buying team. Choose a January 2026 decision date and a London-time cutoff, inspect the latest eligible Elexon wind forecast, then optionally reveal the delivery outcome. January review quantifies how those frozen forecasts performed over the month.
 
-**Live application:** [windshift-january-2026.vercel.app](https://windshift-january-2026.vercel.app). **Source:** [HimanshuJ16/f68d061e00](https://github.com/HimanshuJ16/f68d061e00). React and Python FastAPI run together on Vercel. Deployment and public repository creation were explicitly authorized by the user. No video upload or challenge submission has been made.
+**Live application:** [windshift-january-2026.vercel.app](https://windshift-january-2026.vercel.app). **Source:** [HimanshuJ16/f68d061e00](https://github.com/HimanshuJ16/f68d061e00). React and Python FastAPI run together on Vercel.
 
 The GitHub repository is connected to the existing Vercel project. Its production branch is `main`; pushes to that branch trigger the Vercel build and production deployment.
-
-**25 October redesign:** the interface now uses an editorial graphite/ivory/citron design, self-hosted typography, a horizontal decision timeline and a persistent interval inspector. The production build, 52 backend tests, 12 frontend tests and responsive browser checks passed. See the dated [verification record](docs/VERIFICATION.md) and [brief-to-product checklist](docs/REQUIREMENTS.md).
 
 ## Run locally
 
@@ -34,7 +32,7 @@ With Docker's Linux engine running:
 docker compose up --build
 ```
 
-Open port 8000; stop with `docker compose down`. The image builds React, installs Python dependencies and runs one non-root FastAPI process serving both assets and API. It honours `PORT` (default 8000). The Linux image build, healthy container, browser cutoff/actuals flow, CSV exports and independent 1,488-interval data audit passed on 25 October 2026. See [verification evidence](docs/VERIFICATION.md) and [deployment instructions](docs/DEPLOYMENT.md), including how to use another local port.
+Open port 8000; stop with `docker compose down`. The image builds React, installs Python dependencies and runs one non-root FastAPI process serving both assets and API. It honours `PORT` (default 8000). The Linux image build, healthy container, browser cutoff/actuals flow, CSV exports and independent 1,488-interval data audit passed on 25 October 2026. See [deployment instructions](docs/DEPLOYMENT.md), including how to use another local port.
 
 ## A useful first walkthrough
 
@@ -77,11 +75,10 @@ flowchart LR
 | `data/snapshot.json` | Real normalized hourly forecast vintages and half-hour actuals with 63 source-request records |
 | `data/README.md` | Retrieval windows, normalization and operational details |
 | `tests/backend/`, `frontend/src/*.test.*` | Data/decision invariants, API behavior and frontend interactions |
-| `scripts/audit_snapshot.py` | Independent standard-library audit against raw source cache; no backend calculation imports |
 | `Dockerfile`, `docker-compose.yml`, `heroku.yml`, `Procfile` | Container, local orchestration and manual hosting configuration |
 | `vercel.json`, `pyproject.toml`, `.python-version`, `.vercelignore` | Vercel FastAPI entrypoint, Python 3.12 runtime, pinned cloud dependencies, frontend build and deployment exclusions |
 | `requirements*.txt`, `frontend/package-lock.json` | Pinned dependency inputs |
-| `docs/` | Methodology, research, verification, data audit, effort, demo and manual release checklist |
+| `docs/` | Methodology, primary data sources and deployment instructions |
 
 The snapshot avoids an upstream network dependency during a customer demo. It also makes results reproducible, reviewable and fast without adding a database or background scheduler to this fixed-month pilot. Python owns all decision and metric logic; the browser formats and explores the result. No authentication or write API is needed for this read-only public-data pilot.
 
@@ -116,18 +113,13 @@ cd frontend
 npm.cmd test
 npm.cmd run build
 cd ..
-.\.venv\Scripts\python.exe scripts/audit_snapshot.py --api-url http://127.0.0.1:8000
 docker compose config --quiet
 ```
 
-The independent audit needs the raw cache; run refresh first if starting from a clean source checkout. Omit `--api-url` for an offline audit. See [verification evidence](docs/VERIFICATION.md) for the dated commands, results, screenshots and unverified deployment/container steps, and [data audit](docs/DATA-AUDIT.md) for independently recomputed real figures. The latest verification covers the 25 October redesign; the earlier record is retained separately.
+Validation completed on 25 October 2026: 54 backend tests, 12 frontend tests, the TypeScript/Vite production build, responsive browser workflows and Docker image/runtime checks passed. An independent audit matched all 1,488 default-cutoff intervals and daily/monthly metrics against the cached Elexon responses.
 
 At 09:00, the included snapshot has 1,488/1,488 pairs: MAE **2,041.96 MW**, bias **+1,747.89 MW**, RMSE **2,509.06 MW**, P90 absolute error **4,140.10 MW**. These are descriptive comparisons under the stated scope and alignment, not a claim about pure weather skill, future risk or savings.
 
 ## AI assistance disclosure
 
-This project was built with substantial AI assistance through OpenAI Codex. Astra High contributed the original domain reasoning, architecture, product design, integration and review; GPT-6.1 Sol High agents contributed implementation, source research, documentation and verification. The 25 October redesign is coordinated by GPT-6.1 Sol High, with an Astra High agent providing visual direction and Sol High agents implementing and checking the work. The code and documentation are AI-assisted work. Himanshu must review and understand the result, amend this disclosure if needed, and make his own presentation and submission. No user research, commercial results or deployment success has been fabricated.
-
-## Manual completion
-
-Use the [nine-minute demo script](docs/DEMO.md) and [manual publication/submission checklist](docs/MANUAL-RELEASE.md). Remaining challenge deliverables are an unlisted YouTube demo <=10 minutes (each part <=5 minutes) and manual form submission after incognito access checks. The [effort log](docs/EFFORT.md) records observed work; include your own review and publication time within the 16-hour limit.
+This project was built with substantial AI assistance through OpenAI Codex, including domain research, architecture, interface design, implementation, tests and documentation. The author remains responsible for reviewing and understanding the implementation and for its presentation and submission.
